@@ -1,5 +1,3 @@
-package com.gradle.tutorial;
-
 import java.util.Scanner;
 
 public class Main {
