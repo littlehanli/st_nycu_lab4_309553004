@@ -35,7 +35,7 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Run the Gradle package task
-      run: java -cp java ./src/test/java/GameTest.java
+      run: java -cp java GameTest.java
 
   Assemble:
     runs-on: ubuntu-latest
