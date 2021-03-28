@@ -35,4 +35,4 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Run the Gradle package task
-      run: ./gradlew -b ci.gradle package
+      run: ./gradlew -b st_nycu_lab4_309553004 package
