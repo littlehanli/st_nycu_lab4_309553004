@@ -1,3 +1,6 @@
+package com.example;
+
+import com.example.Game;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -26,9 +29,7 @@ public class GameTest {
     @ParameterizedTest
     @MethodSource("getParameters")
     public void parametersizedTest(String[] input, String expect){
-
         Game gameInput = new Game();
-
         assertEquals(gameInput.Rock_Paper_Scissors(input[0], input[1]), expect);
     }
 
