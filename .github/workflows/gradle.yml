@@ -36,6 +36,19 @@ jobs:
       - name: Test with Gradle
         run: gradle test
 
+      - name: Test Report
+        run: mkdir -p .github/workflows/artifact
+
+      - run: echo hello > .github/workflows/artifact/testReport.txt
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: my-artifact
+          path: .github/workflows/artifact/testReport.txt
+
+
+
+
   Assemble:
     runs-on: ubuntu-latest
 
