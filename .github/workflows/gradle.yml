@@ -64,7 +64,7 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       - name: Compile with Gradle
-        run: gradle compile
+        run: gradle compileTestJava
 
   Test-gradle:
     runs-on: ubuntu-latest
