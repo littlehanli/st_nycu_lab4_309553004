@@ -24,7 +24,7 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
 
-  Test:
+  Test-caches:
     runs-on: ubuntu-latest
 
     steps:
@@ -53,6 +53,20 @@ jobs:
         run: ./gradlew check
 
   Compile:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+      - name: Compile with Gradle
+        run: gradle compile
+
+  Test-gradle:
     runs-on: ubuntu-latest
 
     steps:
