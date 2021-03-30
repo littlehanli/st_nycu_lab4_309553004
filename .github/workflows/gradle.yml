@@ -58,6 +58,11 @@ jobs:
       - name: Assemble with Gradle
         run: gradle assemble
 
+      - name: Publish Jar File
+        uses: actions/upload-artifact@v2
+        with:
+          name: buildJar
+          path: build/libs
 
   Release:
     needs: [Assemble]
@@ -66,8 +71,6 @@ jobs:
     steps:
       - name: Download Artifact
         uses: actions/download-artifact@v2
-        with:
-          name: testReport
 
       - name: Display structure of downloaded files
         run: ls -R
