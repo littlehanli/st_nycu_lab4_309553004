@@ -2,10 +2,8 @@
 [![Java CI with Gradle](https://github.com/littlehanli/st_nycu_lab4_309553004/actions/workflows/gradle.yml/badge.svg)](https://github.com/littlehanli/st_nycu_lab4_309553004/actions/workflows/gradle.yml)
 
 
-:::info
-***Software Testing 2021 - Lab 4***
-Create a rock-paper-scissors game and build with Github Actions
-:::
+>Create a rock-paper-scissors game and build with Github Actions
+
 
 ## Details
 
