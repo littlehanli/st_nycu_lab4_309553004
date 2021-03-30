@@ -39,12 +39,16 @@ jobs:
       - name: Upload Artifact
         run: mkdir -p .github/workflows/artifact
 
-      - run: echo hello > .github/workflows/artifact/testReport.txt
+      - name: Publish Test Report
+        uses: mikepenz/action-junit-report@v2
+        with:
+          report_paths: '.github/workflows/artifact/test/TEST-*.xml'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: actions/upload-artifact@v2
         with:
-          name: my-artifact
-          path: .github/workflows/artifact/testReport.txt
+          name: testReport
+          path: .github/workflows/artifact/test/
 
 
 
