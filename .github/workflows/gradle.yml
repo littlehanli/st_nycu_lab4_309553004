@@ -24,7 +24,9 @@ jobs:
       - name: Compile with Gradle
         run: gradle compileTestJava
 
+
   Test:
+    needs: [Compile]
     runs-on: ubuntu-latest
 
     steps:
@@ -37,16 +39,14 @@ jobs:
         run: gradle test
 
       - name: Publish Test Report
-        if: always()
-        uses: actions/upload-artifact@v2-preview
+        uses: actions/upload-artifact@v2
         with:
           name: testReport
           path: build/reports/tests/test/*
 
 
-
-
   Assemble:
+    needs: [Test]
     runs-on: ubuntu-latest
 
     steps:
@@ -58,6 +58,12 @@ jobs:
       - name: Assemble with Gradle
         run: gradle assemble
 
+
+  Release:
+    needs: [Assemble]
+    runs-on: ubuntu-latest
+
+    steps:
       - name: Download Artifact
         uses: actions/download-artifact@v2
         with:
