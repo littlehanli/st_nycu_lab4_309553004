@@ -66,8 +66,7 @@ jobs:
           name: buildJar
           path: build/libs
 
-  Release:
-    needs: [Assemble]
+  release-note:
     runs-on: ubuntu-latest
 
     steps:
