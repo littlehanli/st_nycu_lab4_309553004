@@ -69,7 +69,7 @@ jobs:
           name: buildJar
           path: build/libs
       - id: step1
-        run: echo "::set-output name=test::hello"
+        run: echo "::set-output name=test::${project.version}"
 
 
   Release:
