@@ -79,7 +79,7 @@ jobs:
 
     if: github.event_name == 'push' && contains(github.ref, '/tags/v')
     env:
-      FILENAME: "${GITHUB_WORKSPACE}/buildJar/Lab4-1.0-SNAPSHOT.jar"
+      FILENAME: "Lab4-1.0-SNAPSHOT.jar"
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 1.8
