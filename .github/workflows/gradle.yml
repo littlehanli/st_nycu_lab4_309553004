@@ -51,8 +51,8 @@ jobs:
     needs: [Test]
     runs-on: ubuntu-latest
 
-    outputs:
-      output1: ${{ steps.step1.outputs.test }}
+    #outputs:
+    #  output1: ${{ steps.step1.outputs.test }}
 
     steps:
       - uses: actions/checkout@v2
@@ -68,8 +68,9 @@ jobs:
         with:
           name: buildJar
           path: build/libs
-      - id: step1
-        run: echo "::set-output name=test::${project.version}"
+
+      #- id: step1
+      #  run: echo "::set-output name=test::hello"
 
 
   Release:
@@ -105,7 +106,8 @@ jobs:
           NEW_VERSION=$(echo "${GITHUB_REF}" | cut -d "/" -f3)
           echo "New version: ${NEW_VERSION}"
           echo "Github username: ${GITHUB_ACTOR}"
-          echo ${{needs.assemble.outputs.output1}}
+        #  echo ${{needs.assemble.outputs.output1}}
+          echo "${org.gradle.project.name}"
         #  ./gradlew -Pversion=${NEW_VERSION} publish
 
 
