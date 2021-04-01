@@ -65,10 +65,10 @@ jobs:
           path: build/libs
 
   Release:
-    if: github.event_name == 'push' && contains(github.ref, '/tags/v')
     needs: [ Assemble ]
     runs-on: ubuntu-latest
 
+    if: github.event_name == 'push' && contains(github.ref, '/tags/v')
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 1.8
