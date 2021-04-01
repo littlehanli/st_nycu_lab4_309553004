@@ -99,8 +99,8 @@ jobs:
           NEW_VERSION=$(echo "${GITHUB_REF}" | cut -d "/" -f3)
           echo "New version: ${NEW_VERSION}"
           echo "Github username: ${GITHUB_ACTOR}"
-          echo "project version: ${project.version}"
-          ./gradlew -Pversion=${NEW_VERSION} publish
+          echo "Project version: ${PROJECT_VERSION}"
+        #  ./gradlew -Pversion=${NEW_VERSION} publish
 
 
   #release-note:
