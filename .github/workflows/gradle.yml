@@ -78,6 +78,8 @@ jobs:
     runs-on: ubuntu-latest
 
     if: github.event_name == 'push' && contains(github.ref, '/tags/v')
+    env:
+      FILENAME: "Lab4-1.0-SNAPSHOT.jar"
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 1.8
@@ -107,7 +109,7 @@ jobs:
           echo "New version: ${NEW_VERSION}"
           echo "Github username: ${GITHUB_ACTOR}"
           echo ${{needs.assemble.outputs.output1}}
-          echo ${{gradle.project.name}}
+          echo "${FILENAME}"
         #  ./gradlew -Pversion=${NEW_VERSION} publish
 
 
