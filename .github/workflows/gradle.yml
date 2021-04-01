@@ -112,5 +112,5 @@ jobs:
       - name: Display structure of downloaded files
         run: ls -R
 
-      - name: Gradle Properties
-        run: gradle properties
+      - name: cat build gradle
+        run: cat build.gradle
