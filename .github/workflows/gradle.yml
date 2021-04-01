@@ -65,6 +65,8 @@ jobs:
         with:
           name: buildJar
           path: build/libs
+        env:
+          JAR_FILE: abcd.jar
 
   Release:
     needs: [ Assemble ]
@@ -80,8 +82,6 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          file:
-            Lab4-1.0-SNAPSHOT.jar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -102,6 +102,7 @@ jobs:
           NEW_VERSION=$(echo "${GITHUB_REF}" | cut -d "/" -f3)
           echo "New version: ${NEW_VERSION}"
           echo "Github username: ${GITHUB_ACTOR}"
+          echo $JAR_FILE
         #  ./gradlew -Pversion=${NEW_VERSION} publish
 
 
