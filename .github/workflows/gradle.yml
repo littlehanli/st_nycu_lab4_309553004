@@ -65,8 +65,11 @@ jobs:
         with:
           name: buildJar
           path: build/libs
+      - name: Print a greeting
         env:
-          JAR_FILE: abcd.jar
+          JAR_FILE: Lab4-1.0-SNAPSHOT.jar
+        run: |
+          echo $JAR_FILE.
 
   Release:
     needs: [ Assemble ]
@@ -101,7 +104,7 @@ jobs:
           NEW_VERSION=$(echo "${GITHUB_REF}" | cut -d "/" -f3)
           echo "New version: ${NEW_VERSION}"
           echo "Github username: ${GITHUB_ACTOR}"
-          echo $JAR_FILE
+          echo $JAR_FILE.
         #  ./gradlew -Pversion=${NEW_VERSION} publish
 
 
