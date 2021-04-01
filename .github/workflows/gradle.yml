@@ -81,7 +81,6 @@ jobs:
           java-version: 1.8
       - name: Release
         uses: softprops/action-gh-release@v1
-        with:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
