@@ -79,6 +79,9 @@ jobs:
           java-version: 1.8
       - name: Release
         uses: softprops/action-gh-release@v1
+        with:
+          file:
+            Lab4-1.0-SNAPSHOT.jar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -99,7 +102,6 @@ jobs:
           NEW_VERSION=$(echo "${GITHUB_REF}" | cut -d "/" -f3)
           echo "New version: ${NEW_VERSION}"
           echo "Github username: ${GITHUB_ACTOR}"
-          echo "Project version: ${PROJECT_VERSION}"
         #  ./gradlew -Pversion=${NEW_VERSION} publish
 
 
