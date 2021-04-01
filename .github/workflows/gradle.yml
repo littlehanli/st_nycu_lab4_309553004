@@ -51,6 +51,9 @@ jobs:
     needs: [Test]
     runs-on: ubuntu-latest
 
+    outputs:
+      output1: ${{ steps.step1.outputs.test }}
+
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 1.8
@@ -60,16 +63,14 @@ jobs:
       - name: Assemble with Gradle
         run: gradle assemble
 
-      - name: Publish Jar File
+      - name: Upload Jar File
         uses: actions/upload-artifact@v2
         with:
           name: buildJar
           path: build/libs
-      - name: Print a greeting
-        env:
-          JAR_FILE: Lab4-1.0-SNAPSHOT.jar
-        run: |
-          echo $JAR_FILE.
+      - id: step1
+        run: echo "::set-output name=test::hello"
+
 
   Release:
     needs: [ Assemble ]
@@ -104,7 +105,7 @@ jobs:
           NEW_VERSION=$(echo "${GITHUB_REF}" | cut -d "/" -f3)
           echo "New version: ${NEW_VERSION}"
           echo "Github username: ${GITHUB_ACTOR}"
-          echo $JAR_FILE.
+          echo ${{needs.assemble.outputs.output1}}
         #  ./gradlew -Pversion=${NEW_VERSION} publish
 
 
