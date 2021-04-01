@@ -102,11 +102,15 @@ jobs:
 
 
 
-  #release-note:
-  #  runs-on: ubuntu-latest
+  release-note:
+    runs-on: ubuntu-latest
 
-  #  steps:
-  #    - name: Download Artifact
-  #      uses: actions/download-artifact@v2
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v2
 
-  #    - name: Display structure of downloaded files
+      - name: Display structure of downloaded files
+        run: ls -R
+
+      - name: Gradle Properties
+        run: gradle properties
