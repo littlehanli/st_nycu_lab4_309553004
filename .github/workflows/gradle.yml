@@ -97,12 +97,15 @@ jobs:
         run: ls -R
 
       - name: Prepare file name
+        id: vars
         run: |
-          VERSION=$(gradle -q resolveProperties --prop=rootProject.version)
-          PROJECTNAME=$(gradle -q resolveProperties --prop=rootProject.name)
+          echo ::set-output name=version::"$(gradle -q resolveProperties --prop=rootProject.version)"
+          echo ::set-output name=project_name::"$(gradle -q resolveProperties --prop=rootProject.name)"
 
-      - name: Test
-        run: echo $PROJECTNAME-$VERSION.jar
+      - name: TEST
+        run: echo ${{ steps.vars.outputs.VERSION }}
+        env:
+          VERSION: ${{ steps.vars.outputs.VERSION }}
 
       - name: Release
         uses: softprops/action-gh-release@v1
@@ -112,3 +115,5 @@ jobs:
         env:
           DIR_NAME: ${{needs.job1.outputs.output1}}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ steps.vars.outputs.VERSION }}
+          PROJECT_NAME: ${{ steps.vars.outputs.project_name }}
