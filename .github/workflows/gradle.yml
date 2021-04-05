@@ -97,7 +97,7 @@ jobs:
         run: ls -R
 
       - name: Prepare file name
-        run: gradle printVersion >> $JAR_FILE
+        run: gradlew -q resolveProperties --prop=rootProject.version
 
       - name: Release
         uses: softprops/action-gh-release@v1
