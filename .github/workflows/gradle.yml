@@ -72,6 +72,7 @@ jobs:
           name: $DIR_NAME
           path: build/libs
 
+      - name: Output Env Var
       - id: step1
         run: echo "::set-output name=test::$DIR_NAME"
 
