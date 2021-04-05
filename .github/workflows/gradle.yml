@@ -81,7 +81,7 @@ jobs:
     needs: [ Assemble ]
     runs-on: ubuntu-latest
 
-    if: github.event_name == 'push' && contains(github.ref, '/tags/v')
+    #if: github.event_name == 'push' && contains(github.ref, '/tags/v')
 
     steps:
       - uses: actions/checkout@v2
@@ -103,9 +103,13 @@ jobs:
           echo ::set-output name=project_name::"$(gradle -q resolveProperties --prop=rootProject.name)"
 
       - name: TEST
-        run: echo ${{ steps.vars.outputs.VERSION }}
+        run: |
+          echo "$PROJECT_NAME-$VERSION.jar"
+          echo $JAR_FILE
         env:
           VERSION: ${{ steps.vars.outputs.VERSION }}
+          PROJECT_NAME: ${{ steps.vars.outputs.project_name }}
+          JAR_FILE: ${{ steps.vars.outputs.project_name }}-${{ steps.vars.outputs.VERSION }}.jar
 
       - name: Release
         uses: softprops/action-gh-release@v1
