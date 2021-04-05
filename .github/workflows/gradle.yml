@@ -97,9 +97,7 @@ jobs:
         run: ls -R
 
       - name: Prepare file name
-        run: |
-          gradle printVersion >> $JAR_FILE
-          echo $JAR_FILE
+        run: gradle printVersion >> $JAR_FILE
 
       - name: Release
         uses: softprops/action-gh-release@v1
