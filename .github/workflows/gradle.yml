@@ -106,7 +106,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: ./${{steps.vars.outputs.project_name}}-${{steps.vars.outputs.VERSION}}.jar
+          files: ./${{needs.Assemble.outputs.output1}}/${{steps.vars.outputs.project_name}}-${{steps.vars.outputs.VERSION}}.jar
         env:
           DIR_NAME: ${{needs.Assemble.outputs.output1}}
           JAR_FILE: ${{steps.vars.outputs.project_name}}-${{steps.vars.outputs.VERSION}}.jar
