@@ -32,6 +32,10 @@
     * **Release** will be execute only when **Git tag push**
     * Add assemble jar file to Github release through **[action-gh-release](https://github.com/softprops/action-gh-release)**
 
+![image](https://imgur.com/ZHYOPhw.png)
+![image](https://imgur.com/b6F9spL.png)
+
+
 * Bonus - Use action/cache to cache your dependencies and speed up your build time.
     * Independent environment of each job
     * The problems of huge project and huge dependencies
