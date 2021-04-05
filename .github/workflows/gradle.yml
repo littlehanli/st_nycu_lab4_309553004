@@ -103,7 +103,7 @@ jobs:
           echo ::set-output name=project_name::"$(gradle -q resolveProperties --prop=rootProject.name)"
 
       - name: TEST
-        run: echo "./$DIR_NAME/"
+        run: echo ./$DIR_NAME'/'$JAR_FILE
         env:
           DIR_NAME: ${{needs.job1.outputs.output1}}
           JAR_FILE: ${{steps.vars.outputs.project_name}}-${{steps.vars.outputs.VERSION}}.jar
@@ -112,7 +112,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: ./${DIR_NAME}/${JAR_FILE}
+          files: ./$DIR_NAME'/'$JAR_FILE
         env:
           DIR_NAME: ${{needs.job1.outputs.output1}}
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
