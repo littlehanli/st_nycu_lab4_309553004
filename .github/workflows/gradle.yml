@@ -97,7 +97,9 @@ jobs:
         run: ls -R
 
       - name: Prepare file name
-        run: gradle -q resolveProperties --prop=rootProject.version
+        run: |
+          gradle -q resolveProperties --prop=rootProject.version >> $VERSION
+          gradle -q resolveProperties --prop=rootProject.name >> $PROJECTNAME
 
       - name: Release
         uses: softprops/action-gh-release@v1
