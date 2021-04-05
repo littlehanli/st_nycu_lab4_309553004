@@ -81,7 +81,7 @@ jobs:
     needs: [ Assemble ]
     runs-on: ubuntu-latest
 
-    #if: github.event_name == 'push' && contains(github.ref, '/tags/v')
+    if: github.event_name == 'push' && contains(github.ref, '/tags/v')
 
     steps:
       - uses: actions/checkout@v2
@@ -102,16 +102,11 @@ jobs:
           echo ::set-output name=version::"$(gradle -q resolveProperties --prop=rootProject.version)"
           echo ::set-output name=project_name::"$(gradle -q resolveProperties --prop=rootProject.name)"
 
-      - name: TEST
-        run: echo ${{ steps.vars.outputs.VERSION }}
-        env:
-          VERSION: ${{ steps.vars.outputs.VERSION }}
-
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: ./$DIR_NAME/Lab4-1.0-SNAPSHOT.jar
+          files: ./$DIR_NAME/$PROJECT_NAME-$VERSION.jar
         env:
           DIR_NAME: ${{needs.job1.outputs.output1}}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
