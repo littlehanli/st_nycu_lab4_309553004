@@ -95,14 +95,17 @@ jobs:
       - name: Display structure of downloaded files
         run: ls -R
 
+      - name: Prepare file name
+        run: gradle properties printVersion
+
       - name: Release
-        env:
-          DIR_NAME: ${{needs.job1.outputs.output1}}
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
-        run: echo $DIR_NAME
-        #with:
-          #files: ./$DIR_NAME/Lab4-1.0-SNAPSHOT.jar
+        with:
+          files: ./$DIR_NAME/Lab4-1.0-SNAPSHOT.jar
+        env:
+          DIR_NAME: ${{needs.job1.outputs.output1}}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
   release-note:
@@ -114,6 +117,3 @@ jobs:
 
       - name: Display structure of downloaded files
         run: ls -R
-
-      - name: Gradle Properties
-        run: gradle properties

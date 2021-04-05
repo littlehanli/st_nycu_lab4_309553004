@@ -18,3 +18,9 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+task printVersion {
+    doLast {
+        println archivesBaseName + '-' + version
+    }
+}
