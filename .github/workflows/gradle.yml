@@ -103,10 +103,9 @@ jobs:
           echo ::set-output name=project_name::"$(gradle -q resolveProperties --prop=rootProject.name)"
 
       - name: TEST
-        run: echo ./$DIR_NAME/$JAR_FILE
+        run: echo ./$JAR_FILE
         env:
-          DIR_NAME: ${{needs.job1.outputs.output1}}
-          JAR_FILE: ${{ steps.vars.outputs.project_name }}-${{ steps.vars.outputs.VERSION }}.jar
+          JAR_FILE: ${{needs.job1.outputs.output1}}/${{ steps.vars.outputs.project_name }}-${{ steps.vars.outputs.VERSION }}.jar
 
       - name: Release
         uses: softprops/action-gh-release@v1
