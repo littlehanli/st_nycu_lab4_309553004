@@ -21,6 +21,6 @@ test {
 
 task printVersion {
     doLast {
-        println archivesBaseName + '-' + version
+        println archivesBaseName + '-' + version + '.jar'
     }
 }

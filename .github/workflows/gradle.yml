@@ -97,7 +97,9 @@ jobs:
         run: ls -R
 
       - name: Prepare file name
-        run: gradle properties printVersion
+        run: |
+          gradle printVersion >> $JAR_FILE
+          echo $JAR_FILE
 
       - name: Release
         uses: softprops/action-gh-release@v1
@@ -107,14 +109,3 @@ jobs:
         env:
           DIR_NAME: ${{needs.job1.outputs.output1}}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-
-  release-note:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Download Artifact
-        uses: actions/download-artifact@v2
-
-      - name: Display structure of downloaded files
-        run: ls -R
