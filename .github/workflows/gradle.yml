@@ -100,8 +100,9 @@ jobs:
           DIR_NAME: ${{needs.job1.outputs.output1}}
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
-        with:
-          files: ./$DIR_NAME/Lab4-1.0-SNAPSHOT.jar
+        run: echo $DIR_NAME
+        #with:
+          #files: ./$DIR_NAME/Lab4-1.0-SNAPSHOT.jar
 
 
   release-note:
@@ -115,4 +116,4 @@ jobs:
         run: ls -R
 
       - name: Gradle Properties
-        run: gradlew properties
+        run: gradle properties
