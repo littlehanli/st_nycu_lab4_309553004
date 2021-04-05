@@ -109,5 +109,5 @@ jobs:
           files: ./${{env.DIR_NAME}}/${{env.JAR_FILE}}
         env:
           DIR_NAME: ${{needs.Assemble.outputs.output1}}
-          JAR_FILE: ${{steps.vars.outputs.project_name}}-${{steps.vars.outputs.VERSION}}.jar
+          JAR_FILE: ${{steps.vars.outputs.project_name}}-${{steps.vars.outputs.version}}.jar
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
