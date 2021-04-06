@@ -21,10 +21,18 @@
 
 * Part 3 - Use github action to compile, test, assemble JAR file
     * Write Github Action (gradle.yml)
+        * Compile: gradle compileTestJava
+        ![image](https://imgur.com/0A4BlBC.png)
+        * Test: gradle test
+        ![image](https://imgur.com/ZOJiT89.png)
+        * Assemble: gradle assemble
+        ![image](https://imgur.com/WcWV79h.png)
     * When there is a new commit and push, execute three jobs:
         * **Compile**, **Test**, and **Assemble** (need to be executed in order)
+        ![image](https://imgur.com/N6hoAtj.png)
     * Storing workflow "all test report directory", "assemble jar file" as workflow [artifacts](https://github.com/actions/upload-artifact)
         * Upload **jar file** and **testReport** to github workflow artifacts
+        ![image](https://imgur.com/wk0G0Hf.png)
     * Add github action badge to README
 
 * Part 4 - Use github action to automate release jar file when push is a tag pushed events
