@@ -22,11 +22,15 @@
 * Part 3 - Use github action to compile, test, assemble JAR file
     * Write Github Action (gradle.yml)
         * Compile: gradle compileTestJava
-            ![image](https://imgur.com/0A4BlBC.png)
+
+         ![image](https://imgur.com/0A4BlBC.png)
         * Test: gradle test
-            ![image](https://imgur.com/ZOJiT89.png)
+         
+         ![image](https://imgur.com/ZOJiT89.png)
         * Assemble: gradle assemble
-            ![image](https://imgur.com/WcWV79h.png)
+         
+         ![image](https://imgur.com/WcWV79h.png)
+    
     * When there is a new commit and push, execute three jobs:
         * **Compile**, **Test**, and **Assemble** (need to be executed in order)
         ![image](https://imgur.com/N6hoAtj.png)
